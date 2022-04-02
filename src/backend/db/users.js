@@ -5,13 +5,13 @@ import { formatDate } from "../utils/authUtils";
  * You can add default users of your wish with different attributes
  * */
 
-export const users = [
+ export const users = [
   {
     _id: uuid(),
-    firstName: "Adarsh",
-    lastName: "Balika",
-    email: "adarshbalika@gmail.com",
-    password: "adarshBalika123",
+    firstName: "Ramalinga",
+    lastName: "Reddy",
+    email: "ramalinga.kalagotla@gmail.com",
+    password: "123456",
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },

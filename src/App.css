@@ -1,51 +1,416 @@
-.App {
+:root {
+  --div-background-color: #4b86b4;
+  --app-color-main: #E68927;
+  --app-background-color: #333;
+}
+
+
+/* Auth page css starts here */
+.login-page-wrapper {
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  justify-content:center;
+  margin-top: -5%;
+}
+.login-card-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 90%;
+  padding: 1rem;
+  border: 1px solid var(--div-background-color);
+  background-color:var(--white-color);
+  color:var(--black-color)
+
+}
+.login-input {
+  width: 100%;
+}
+.login-header {
   text-align: center;
-}
 
-.App-logo {
-  height: 40vmin;
+}
+.login-forgotPassword {
+  color: var(--primary-color-main);
+}
+.rememberMe-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-self: stretch;
+  padding: 0 0.5rem;
+}
+.remember-checkbox {
+  margin: 0 0.5rem 0 0;
+}
+.create-account {
+  text-decoration: underline;
+}
+.password-wrapper {
+  position: relative;
+}
+.show-password {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color:transparent;
+  border: 0;
+  cursor: pointer;
+}
+.input-label {
+  position: relative;
+}
+.input-name {
+  padding: 1rem;
+}
+.input-placeholder {
+  position: absolute;
+  top:1rem;
+  left:1rem;
+  padding: 0.2rem;
+  transition: 0.2s;
+  background-color:var(--white-color);
+  transition-timing-function: ease;
+  transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
   pointer-events: none;
+  opacity: 0.7;
+  color:var(--black-color);
+}
+.input-name:focus + .input-placeholder, .input-name:not(:placeholder-shown) + .input-placeholder {
+  opacity: 1;
+  transform: scale(1) translateY(-110%) translateX(0%);
+}
+@media only screen and (min-width: 570px){
+  .login-card-wrapper {
+    width: 70%;
+  }
+}
+@media only screen and (min-width: 740px){
+.login-card-wrapper {
+  width: 50%;
+}
+}
+@media only screen and (min-width: 1050px){
+.login-card-wrapper {
+  width: 40%;
+}
+}
+/* Auth page css ends here */
+
+
+/* navbar css starts here */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.btn {
+  padding: 0.5rem;
+  font-size: 0.8rem;
+}
+.btn-text {
+  color:inherit;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.navbar {
+  width: 90%;
+  margin: auto;
+  background-color: transparent;
+  align-items: baseline;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem 0;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: baseline;
+  color: var(--app-color-main);
+  padding: 0 0.5rem 0 0;
+}
+.navbar-search {
+  position: relative;
+  width:8rem;
+}
+
+.navbar-cart {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.search-input {
+  padding: 0.5rem 2rem 0.5rem 3rem;
+  width: 100%;
+}
+.nav-icon {
+  font-size: 1.5rem;
+  padding: 0 0.3rem;
+  cursor: pointer;
+  border-radius: 50%;
+  color: var(--app-color-main);
+  
+}
+
+.search-icon {
+  position: absolute;
+  top: 30%;
+  left: 1rem;
+  color: var(--black-color);
+}
+
+
+.page-links {
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+}
+.footer-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  color:var(--white-color);
+  background-color: var(--app-background-color);
+  border: 1px solid var(--div-background-color);
+  text-align: center;
+
+}
+.link-active {
+  background-color: var(--div-background-color);
+  color: var(--app-background-color);
+  padding: 0.5rem 0  0.5rem  1rem;
+}
+.footer-link-active {
+  width: 25%;
+  padding:  0.5rem;
+
+}
+.footer-link-notactive {
+  width: 25%;
+  padding: 0.5rem;
+  border: 1px solid var(--div-background-color)
+
+}
+.link-notactive {
+  background-color:var(--app-background-color);
+  color: var(--white-color);
+}
+.side-navbar-wrapper {
+  display: none;
+}
+.login-btn {
+  background-color: var(--app-color-main);
+}
+@media only screen and (min-width: 470px) {
+  .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+  .nav-icon {
+    display: inline-block;
+  }
+
+  .navbar-logo {
+    font-size: 1.1rem;
+    padding: 0 0.5rem 0 0;
+  }
+  .nav-logo {
+    font-size: 1.6rem;
+  }
+  .navbar-search {
+    width: 10rem;
+  }
+}
+@media only screen and (min-width: 570px) {
+  .btn {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+
+  .navbar-logo {
+    font-size: 1.2rem;
+    padding: 0 0.5rem 0 0;
+  }
+  .nav-logo {
+    font-size: 1.7rem;
+  }
+  .page-links {
+    font-size: 1.2rem;
+  }
+  .navbar-search {
+    width: 15rem;
+  }
+}
+@media only screen and (min-width: 670px) {
+  .btn {
+    padding: 0.5rem 1rem;
+    font-size: 1.1rem;
+  }
+
+  .navbar-logo {
+    font-size: 1.3rem;
+    padding: 0 0.5rem 0 0;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .btn {
+    padding: 0.5rem 1.3rem;
+  }
+  .navbar {
+    width: 95%;
+  }
+  .navbar-search {
+    width: 18rem;
+  }
+  .footer-nav {
+    display: none;
+  }
+  .side-navbar-wrapper {
+    display: flex;
+  }
+ 
+  .sidemenu-btn {
+    position :absolute;
+    top:5%;
+    left: 5%;
+  
+  }
+  .side-navbar-content {
+    width: 12rem;
+    display: flex;
+    flex-direction: column;
+    gap:2rem;
+    min-height:100vh;
+    border-right: 3px solid var(--div-background-color);
+   
+  }
+  .sidebar-icon {
+    padding: 0 2rem 0 0;
+      font-size: 1.5rem;
   }
 }
 
-.App-header {
-  background-color: #22201c;
-  min-height: 100vh;
+@media only screen and (min-width: 1200px) {
+  .navbar {
+    width: 95%;
+  }
+  .navbar-search {
+    display: inline-block;
+  }
+  .side-navbar-content  {
+    width:17rem
+  }
+  .navbar-search {
+    width: 22rem;
+  }
+  .sidemenu-btn {
+    top:6%;
+    left: 7%;
+  }
+}
+/* nav bar css ends here */
+ /* user profile css start here */
+ .profile-card-wrapper {
+  width: 15rem;
+  background-color:var(--app-background-color);
+  padding: 1rem;
+  position:absolute;
+  right: 0%;
+  top: 5rem;
+  z-index:1;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: white;
+  gap: 1rem;
+  border: 1px solid var(--div-background-color);
+  color: var(--white-color);
+
 }
 
-.App-link {
-  color: #61dafb;
+/* Home css starts here */
+.App {
+  background-color: var(--app-background-color);
+  min-height: 100vh;
 }
-
-.brand-title {
-  font-size: 3rem;
-  color: #d9d9d9;
+.quote-text {
+  color: var(--white-color);
+  padding: 1rem 0 0 0;
+  font-style: italic;
+  width: 90%;
+  margin: auto;
+  text-align: center;
 }
-
-.brand-title span {
-  color: #ffde59;
-}
-
-.brand-description {
-  font-size: 1.4rem;
-}
-
-.links {
+.hero-container {
+  border-radius:2%;
   display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items:center;
+}
+.hero-btn {
+  width: 15rem;
+  padding: 0.7rem 0;
+  border-radius:0.5rem;
+  background-color:var(--white-color);
+  border:0;
+  text-transform: capitalize;
+  color: var(--app-color-main);
+  font-weight: bold;
+  cursor: pointer;
+}
+.signup-btn {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color:var(--app-color-main);
+  color: var(--black-color);
+  border-radius: 0;
+}
+.hero-img {
+  height: 15rem;
+}
+.habit-cat-wrapper {
+  width: 90%;
+  color: var(--white-color);
+  border: 1px solid var(--grey-color);
+  padding: 1rem;
+  text-align: center;
+  border-radius:0.3rem;
+  opacity: 0.8;
+}
+.home-cat-small {
+  opacity: 0.5;
 }
 
-.links a {
-  color: #d9d9d9;
-  font-size: 1.2rem;
-  margin: 1rem;
+@media only screen and (min-width: 521px) {
+  .hero-img {
+    height: 20rem;
+  }
+}
+@media only screen and (min-width: 700px) {
+  .hero-img {
+    height: 25rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .home-page-wrapper {
+    display:flex;
+    padding-top:2rem;
+    color: var(--white-color);
+  }
+  .hero-img {
+    width: 50%;
+    height: auto;
+  }
+  .hero-container {
+    width: 50%;
+    margin: auto;
+    gap: 2rem;
+  }
+  .quote-text {
+    padding: 1rem 0;
+  }
 }
