@@ -1,14 +1,26 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import * as ReactDOMClient from 'react-dom/client';
 import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
+import { BrowserRouter as Router } from "react-router-dom"
+import { AuthProvider } from "./frontend/context/index-context"
 
 // Call make Server
 makeServer();
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById("root")
-);
+
+
+const root = ReactDOMClient.createRoot(document.getElementById("root"))
+root.render(
+  
+              <React.StrictMode>
+                <Router>
+                  <AuthProvider>
+                    <App />
+                  </AuthProvider>
+                </Router>
+              </React.StrictMode>
+            
+            )
+
+
