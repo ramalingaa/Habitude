@@ -1,2 +1,3 @@
 import { AuthProvider, useAuthContext } from "./auth-context"
-export { AuthProvider, useAuthContext }
+import { useHabit, HabitProvider  } from "./habit-context"
+export { AuthProvider, useAuthContext, useHabit, HabitProvider }

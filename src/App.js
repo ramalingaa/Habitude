@@ -1,8 +1,10 @@
 import "./App.css";
-import { Home, Navbar, Login, Signup, ForgotPassword } from "./frontend/components/index-components"
-import { Routes, Route} from "react-router-dom"
+import { Home, Navbar, Login, Signup, ForgotPassword, UserHabit } from "./frontend/components/index-components"
+import { Routes, Route, Navigate} from "react-router-dom"
+import { useAuthContext } from "./frontend/context/index-context"
 
 function App() {
+  const { jwtToken } = useAuthContext()
   return (
     <div className="App">
       <Navbar />
@@ -11,6 +13,7 @@ function App() {
           <Route path = "/signup" element = {<Signup />} />
           <Route path = "/forgotpassword" element = {<ForgotPassword />} />
           <Route path = "/" element = {<Home />} />
+          <Route path = "/habits" element = {jwtToken ?<UserHabit />  :<Navigate to =  "/login"  />} />
 
 
 
