@@ -8,7 +8,7 @@ const useHabit = () => useContext(HabitContext)
 
 const HabitProvider = ({children}) => {
     const { jwtToken } = useAuthContext()
-    const [habitState, dispatch] = useReducer(habitReducer, {serverData:[], habitData:[]})
+    const [habitState, dispatch] = useReducer(habitReducer, {serverData:[], habitData:[], archiveData:[]})
 
     useEffect(() => {
         (async () => {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { useAuthContext } from '../../context/index-context'
 import { HabitForm, AddHabit } from '../index-components'
 import { quotesData } from "./quotesData"
@@ -12,7 +12,6 @@ const Home = () => {
     navigate("/login")
   }
 
-  
   return (
   <div>
       {!jwtToken && 
@@ -35,21 +34,21 @@ const Home = () => {
         <AddHabit  setaddHabitForm = {setaddHabitForm}/>
         {addHabitForm  && <HabitForm  setaddHabitForm = {setaddHabitForm}/>}
         <div className = "habit-cat-wrapper">
-          <p>Trending Habits</p>
-          <small className = "home-cat-small">Take one step in right direction</small>
-        </div>
-        <div className = "habit-cat-wrapper">
-          <p>Staying at Home</p>
+          <Link to = "/habits">My Habits</Link>
           <small className = "home-cat-small">Use this time to achieve something new</small>
         </div>
         <div className = "habit-cat-wrapper">
-          <p>Must have Habits</p>
+          <Link to = "/archive">Archived Habits</Link>
           <small className = "home-cat-small">Small habits, big results</small>
         </div>
         <div className = "habit-cat-wrapper">
-          <p>Morning routine</p>
+        <Link to = "/pomodoro">Pomodoro</Link>
           <small className = "home-cat-small">Be Vibrant throughout the day</small>
         </div>
+        <div className = "habit-cat-wrapper">
+        <Link to = "/archive">Stats</Link>
+         <small className = "home-cat-small">Take one step in right direction</small>
+       </div>
         <q className = "quote-text">{quotesData[Math.round(Math.random()*10)]}</q>
       </div>}
   </div>

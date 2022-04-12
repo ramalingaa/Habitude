@@ -6,7 +6,8 @@ const AddHabit = ({ setaddHabitForm }) => {
       }
   return (
     <div>
-        <button className = "hero-btn" onClick = { toggleHabitForm }>Add a Habit</button>
+      
+        <button className = "btn primary" onClick = { toggleHabitForm }>Add a Habit</button>
     </div>
   )
 }

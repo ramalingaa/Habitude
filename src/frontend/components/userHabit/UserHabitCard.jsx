@@ -18,6 +18,17 @@ const UserHabitCard = ({ hInfo }) => {
       console.log(e)
     }
   }
+  const archiveHabit = async () => {
+    try {
+      const response = await axios.post(`/api/archives/${hInfo._id}`,{}, {headers:{authorization:jwtToken}})
+      
+      dispatch({type:"SET_ARCHIVE_DATA", payload:response.data.archives})
+      dispatch({type:"SET_HABIT_DATA", payload:response.data.habits})
+    }
+    catch(e) {
+      console.log(e)
+    }
+  }
   return (
     
       <div className = "habit-cat-wrapper habit-details-wrapper">
@@ -28,6 +39,7 @@ const UserHabitCard = ({ hInfo }) => {
         <div className="edit-delete-btnWrapper">
           <button className="btn edit-btn" onClick = {updateHabitEdit}>Edit</button>
           <button className="btn edit-btn"  onClick = {deleteHabit}>Delete</button>
+          <button className="btn edit-btn" onClick = {archiveHabit}>Archive</button>
         </div>
         {editHabitForm  && <HabitForm  setEditHabitForm = {setEditHabitForm} editHabitForm = { editHabitForm } editHabitInfo = {hInfo}/>}
 
