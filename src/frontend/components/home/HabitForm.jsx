@@ -14,9 +14,9 @@ const HabitForm = ({ setaddHabitForm  = "", setEditHabitForm = "", editHabitForm
   const updateFormData = (e) => {
     const { name } = e.target
     setHabitFormData((prev) => ({...prev, [name]: e.target.value}))
-    const errorMessage = name === "repeat" ? "Do it atlest for 5 times to benefit" : `${name} should have atleast 4 characters`
+    const errorMessage = name === "repeat" ? "Do it atlest for One time to benefit" : `${name} should have atleast 4 characters`
     if(name === "repeat"){
-      e.target.value < 5 ? setFormError((prev) => ({...prev, [name]: errorMessage})) : setFormError((prev) => ({...prev, [name]:""}))
+      e.target.value < 1 ? setFormError((prev) => ({...prev, [name]: errorMessage})) : setFormError((prev) => ({...prev, [name]:""}))
     }
     else {
       e.target.value.length < 4 ? setFormError((prev) => ({...prev, [name]: errorMessage})) : setFormError((prev) => ({...prev, [name]:""}))

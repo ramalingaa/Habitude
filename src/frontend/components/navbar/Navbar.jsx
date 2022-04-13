@@ -17,6 +17,7 @@ const Navbar = () => {
      {jwtToken ? 
      <div className = "page-links">
        <Link to = "/habits" className="">My Habits</Link>
+       <Link to = "/archive" className="">Archived</Link>
        <i className="far fa-user nav-icon" onClick = {toggleProfileCard}></i>
      </div> : 
      <Link to = "/Login" className="navbar-cart">

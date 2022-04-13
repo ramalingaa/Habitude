@@ -20,7 +20,7 @@ const UserHabit = () => {
         :
         <div className = "userhabit-wrapper">
          { habitData.map((habit) => {
-            return < UserHabitCard  hInfo = {habit}/>
+            return < UserHabitCard  hInfo = {habit} key = {habit._id}/>
           })}
         </div>
           

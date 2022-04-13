@@ -3,6 +3,9 @@ const habitReducer = (habitState, action) =>  {
         case "SET_HABIT_DATA" :{
             return {...habitState, serverData:action.payload, habitData:action.payload}
         }
+        case "SET_ARCHIVE_DATA" : {
+            return {...habitState, archiveData:action.payload}
+        }
         default: {
             return habitState
         }
