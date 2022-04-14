@@ -36,6 +36,7 @@ const UserHabitCard = ({ hInfo }) => {
         <p>Goal of the Habit: {hInfo.goal}</p>
         <p>Repeats for a day: {hInfo.repeat}</p>
         <p>Target date: {hInfo.endDate}</p>
+        <p>Start date: {hInfo.startDate}</p>
         <div className="edit-delete-btnWrapper">
           <button className="btn edit-btn" onClick = {updateHabitEdit}>Edit</button>
           <button className="btn edit-btn"  onClick = {deleteHabit}>Delete</button>
