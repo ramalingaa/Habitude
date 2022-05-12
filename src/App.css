@@ -174,42 +174,7 @@ a {
   align-items:baseline;
   color: var(--app-color-main);
 }
-.footer-nav {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-around;
-  color:var(--white-color);
-  background-color: var(--app-background-color);
-  border: 1px solid var(--div-background-color);
-  text-align: center;
 
-}
-.link-active {
-  background-color: var(--div-background-color);
-  color: var(--app-background-color);
-  padding: 0.5rem 0  0.5rem  1rem;
-}
-.footer-link-active {
-  width: 25%;
-  padding:  0.5rem;
-
-}
-.footer-link-notactive {
-  width: 25%;
-  padding: 0.5rem;
-  border: 1px solid var(--div-background-color)
-
-}
-.link-notactive {
-  background-color:var(--app-background-color);
-  color: var(--white-color);
-}
-.side-navbar-wrapper {
-  display: none;
-}
 .login-btn {
   background-color: var(--app-color-main);
 }
@@ -274,32 +239,7 @@ a {
   .navbar-search {
     width: 18rem;
   }
-  .footer-nav {
-    display: none;
-  }
-  .side-navbar-wrapper {
-    display: flex;
-  }
  
-  .sidemenu-btn {
-    position :absolute;
-    top:5%;
-    left: 5%;
-  
-  }
-  .side-navbar-content {
-    width: 12rem;
-    display: flex;
-    flex-direction: column;
-    gap:2rem;
-    min-height:100vh;
-    border-right: 3px solid var(--div-background-color);
-   
-  }
-  .sidebar-icon {
-    padding: 0 2rem 0 0;
-      font-size: 1.5rem;
-  }
 }
 
 @media only screen and (min-width: 1200px) {
@@ -309,16 +249,11 @@ a {
   .navbar-search {
     display: inline-block;
   }
-  .side-navbar-content  {
-    width:17rem
-  }
+ 
   .navbar-search {
     width: 22rem;
   }
-  .sidemenu-btn {
-    top:6%;
-    left: 7%;
-  }
+ 
 }
 /* nav bar css ends here */
  /* user profile css start here */
