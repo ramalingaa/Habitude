@@ -1,5 +1,5 @@
 import "./App.css";
-import { Home, Navbar, Login, Signup, ForgotPassword, UserHabit, Archive, Pomodoro } from "./frontend/components/index-components"
+import { Home, Navbar, Login, Signup, ForgotPassword, UserHabit, Archive, Pomodoro, Stats } from "./frontend/components/index-components"
 import { Routes, Route, Navigate} from "react-router-dom"
 import { useAuthContext } from "./frontend/context/index-context"
 
@@ -16,6 +16,7 @@ function App() {
           <Route path = "/habits" element = {jwtToken ?<UserHabit />  :<Navigate to =  "/login"  />} />
           <Route path = "/archive" element = {jwtToken ?<Archive />  :<Navigate to =  "/login"  />} />
           <Route path = "/pomodoro" element = {jwtToken ?<Pomodoro />  :<Navigate to =  "/login"  />} />
+          <Route path = "/stats" element = {jwtToken ?<Stats />  :<Navigate to =  "/login"  />} />
       </Routes>
     </div>
   );
