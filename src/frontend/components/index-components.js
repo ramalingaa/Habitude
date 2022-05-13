@@ -12,4 +12,5 @@ import Archive from "./archive/Archive"
 import ArchiveCard from "./archive/ArchiveCard"
 import Pomodoro from "./pomodoro/Pomodoro"
 import PomodoForm from "./pomodoro/PomodoForm";
-export { Login, Signup, ForgotPassword, Home, Navbar, UserProfile, UserHabit, UserHabitCard, HabitForm, AddHabit, Archive, ArchiveCard, Pomodoro, PomodoForm}
+import Stats from "./stats/Stats"
+export { Login, Signup, ForgotPassword, Home, Navbar, UserProfile, UserHabit, UserHabitCard, HabitForm, AddHabit, Archive, ArchiveCard, Pomodoro, PomodoForm, Stats}

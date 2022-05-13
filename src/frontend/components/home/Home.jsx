@@ -46,7 +46,7 @@ const Home = () => {
           <small className = "home-cat-small">Be Vibrant throughout the day</small>
         </div>
         <div className = "habit-cat-wrapper">
-        <Link to = "/archive">Stats</Link>
+        <Link to = "/stats">Stats</Link>
          <small className = "home-cat-small">Take one step in right direction</small>
        </div>
         <q className = "quote-text">{quotesData[Math.round(Math.random()*10)]}</q>
