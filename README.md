@@ -3,7 +3,7 @@
  
 Habitude helps to work on new habits by setting goals for habit formation.
 ## Visit App here
-[Visit here](https://habit-app-six.vercel.app)
+[Visit here](https://habit-tracker-sandy.vercel.app/)
 
 
 ## Screenshots
