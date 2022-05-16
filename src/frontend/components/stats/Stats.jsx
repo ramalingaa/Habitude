@@ -1,10 +1,8 @@
 import React from 'react'
-import { useHabit } from '../../context/index-context'
+import { useSelector } from 'react-redux'
 
 const Stats = () => {
-    const { habitState } = useHabit()
-    const { habitData, archiveData } = habitState
-
+    const { habitData, archiveData } = useSelector((store) => store.habit)
   return (
     <div className = "pomodoro-main-wrapper">
         <p>No of Habits Added : {habitData.length}</p>

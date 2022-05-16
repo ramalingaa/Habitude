@@ -1,14 +1,15 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { useNavigate, Link } from "react-router-dom"
-import { useAuthContext } from '../../context/auth-context'
+import { useDispatch } from "react-redux"
+import { habitActions } from '../../../reduxStore/createSlice'
 
 const Login = () => {
 
     const [showPassword, setShowPassword] = useState(false)
     const [error, setError] = useState({emailNotFound:false,wrongCredentials:false, blankError: false, otherError:false})
     const [userData, setUserData] = useState({email:"", password:""})
-    const {  setJwtToken, setUserProfileData } = useAuthContext()
+    const dispatch = useDispatch()
     const navigate = useNavigate() 
     const updateUserData = (e) => {
         const { name } = e.target
@@ -21,8 +22,8 @@ const Login = () => {
                 const response = await axios.post("/api/auth/login",userData)
                 if(response.status === 200){
                     localStorage.setItem("HAB",JSON.stringify({"JWT_TOKEN_HAB":response.data.encodedToken, "USER_PROFILE_HAB":response.data.foundUser.firstName}))
-                    setJwtToken(() =>response.data.encodedToken)
-                    setUserProfileData(() =>response.data.foundUser )
+                    dispatch(habitActions.getJwtToken(response.data.encodedToken))
+                    dispatch(habitActions.getUserData(response.data.foundUser.firstName))
                     navigate("/")
                 } else {
                     throw new Error()
@@ -54,8 +55,8 @@ const Login = () => {
             const guestData = {email:"ramalinga.kalagotla@gmail.com", password:"123456"}
             const response = await axios.post("/api/auth/login",guestData)
             localStorage.setItem("HAB",JSON.stringify({"JWT_TOKEN_HAB":response.data.encodedToken, "USER_PROFILE_HAB":response.data.foundUser.firstName}))
-            setJwtToken(() =>response.data.encodedToken)
-            setUserProfileData(() =>response.data.foundUser )
+            dispatch(habitActions.getJwtToken(response.data.encodedToken))
+            dispatch(habitActions.getUserData(response.data.foundUser.firstName))
             navigate("/")
 
         }catch(e) {

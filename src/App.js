@@ -1,10 +1,9 @@
 import "./App.css";
 import { Home, Navbar, Login, Signup, ForgotPassword, UserHabit, Archive, Pomodoro, Stats } from "./frontend/components/index-components"
 import { Routes, Route, Navigate} from "react-router-dom"
-import { useAuthContext } from "./frontend/context/index-context"
-
+import { useSelector } from "react-redux"
 function App() {
-  const { jwtToken } = useAuthContext()
+  const { jwtToken } = useSelector((store) => store.habit)
   return (
     <div className="App">
       <Navbar />

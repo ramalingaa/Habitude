@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react'
-import { useAuthContext, useHabit } from "../../context/index-context"
 import axios from "axios"
+import { useDispatch, useSelector } from "react-redux"
+
 import { useNavigate } from "react-router-dom"
+import { habitActions } from '../../../reduxStore/createSlice'
 
 const HabitForm = ({ setaddHabitForm  = "", setEditHabitForm = "", editHabitForm  = "", editHabitInfo  = "" }) => {
 
   const habitFormIntialValue = editHabitForm ? editHabitInfo :{name:"", goal:"", repeat:"", startDate:"",endDate:""}
   const [habitFormData, setHabitFormData] = useState(habitFormIntialValue)
   const [formError, setFormError] = useState({name:"", goal:"", repeat:"", duration:""})
-  const { jwtToken } = useAuthContext()
-  const { dispatch } = useHabit()
+  const { jwtToken } = useSelector((store) => store.habit)
+  const  dispatch  = useDispatch()
   const navigate = useNavigate()
   const updateFormData = (e) => {
     const { name } = e.target
@@ -27,7 +29,7 @@ const HabitForm = ({ setaddHabitForm  = "", setEditHabitForm = "", editHabitForm
     if(editHabitForm){
       try {
         const response = await axios.post(`/api/habits/${editHabitInfo._id}`, {habit:habitFormData},{headers: {authorization:jwtToken}})
-        dispatch({type:"SET_HABIT_DATA", payload:response.data.habits})
+        dispatch(habitActions.getHabitData(response.data.habits))
         setHabitFormData((prev) => ({...prev,name:"", goal:"", repeat:"", endDate:""}))
         setEditHabitForm((prev) => !prev)
       }catch (e) {
@@ -37,7 +39,7 @@ const HabitForm = ({ setaddHabitForm  = "", setEditHabitForm = "", editHabitForm
     else {
       try {
         const response = await axios.post("/api/habits", {habit:habitFormData},{headers: {authorization:jwtToken}})
-        dispatch({type:"SET_HABIT_DATA", payload:response.data.habits})
+        dispatch(habitActions.getHabitData(response.data.habits))
         setHabitFormData((prev) => ({...prev,name:"", goal:"", repeat:"", endDate:""}))
         setaddHabitForm((prev) => !prev)
         navigate("/habits")
