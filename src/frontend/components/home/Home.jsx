@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 import { useNavigate, Link } from 'react-router-dom'
-import { useAuthContext } from '../../context/index-context'
 import { HabitForm, AddHabit } from '../index-components'
 import { quotesData } from "./quotesData"
 
 const Home = () => {
   const [addHabitForm, setaddHabitForm] = useState(false)
-  const { jwtToken } = useAuthContext()
+  const { jwtToken } = useSelector((store) => store.habit)
   const navigate = useNavigate()
   const navigateLogin = () => {
     navigate("/login")

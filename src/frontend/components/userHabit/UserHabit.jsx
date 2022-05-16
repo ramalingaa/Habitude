@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
-import { useHabit } from '../../context/index-context'
 import { UserHabitCard, AddHabit, HabitForm } from "../index-components"
+import { useSelector } from 'react-redux';
 
 const UserHabit = () => {
   const [addHabitForm, setaddHabitForm] = useState(false)
-    const { habitState } = useHabit()
-    const { habitData } = habitState
+    const { habitData } = useSelector((store) => store.habit)
   return (
     <div>
         <div className  = "addhabit-btn-wrapper">

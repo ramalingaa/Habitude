@@ -1,18 +1,20 @@
 import React, { useState } from 'react'
 import { HabitForm } from "../index-components"
-import { useAuthContext, useHabit } from "../../context/index-context"
 import axios from "axios"
+import { useDispatch, useSelector } from 'react-redux';
+import { habitActions } from '../../../reduxStore/createSlice';
 const UserHabitCard = ({ hInfo }) => {
   const [editHabitForm, setEditHabitForm] = useState(false)
-  const { jwtToken } = useAuthContext()
-  const { dispatch } = useHabit()
+  const { jwtToken } = useSelector((store) => store.habit)
+  const  dispatch  = useDispatch()
   const updateHabitEdit = () => {
     setEditHabitForm((prev) => !prev)
   }
   const deleteHabit = async() => {
     try {
       const response = await axios.delete(`/api/habits/${hInfo._id}`, {headers:{authorization:jwtToken}})
-      dispatch({type:"SET_HABIT_DATA", payload:response.data.habits})
+      dispatch(habitActions.getHabitData(response.data.habits))
+
     }
     catch(e) {
       console.log(e)
@@ -21,9 +23,8 @@ const UserHabitCard = ({ hInfo }) => {
   const archiveHabit = async () => {
     try {
       const response = await axios.post(`/api/archives/${hInfo._id}`,{}, {headers:{authorization:jwtToken}})
-      
-      dispatch({type:"SET_ARCHIVE_DATA", payload:response.data.archives})
-      dispatch({type:"SET_HABIT_DATA", payload:response.data.habits})
+      dispatch(habitActions.getArchiveData(response.data.archives))
+      dispatch(habitActions.getHabitData(response.data.habits))
     }
     catch(e) {
       console.log(e)

@@ -1,9 +1,8 @@
 import React from 'react'
-import { useHabit } from '../../context/index-context'
 import { ArchiveCard } from "../index-components"
+import { useSelector } from 'react-redux'
 const Archive = () => {
-  const { habitState } = useHabit()
-  const { archiveData } = habitState
+  const { archiveData } = useSelector((store) => store.habit)
   return (
     <div>
       {archiveData.length < 1 && 

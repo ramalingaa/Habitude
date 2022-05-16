@@ -1,15 +1,17 @@
 import React from 'react'
 import axios from "axios"
-import { useAuthContext, useHabit } from "../../context/index-context"
+import { useDispatch, useSelector } from "react-redux"
+import { habitActions } from '../../../reduxStore/createSlice'
 
 const ArchiveCard = ({hInfo}) => {
-    const { jwtToken } = useAuthContext()
-    const { dispatch } = useHabit()
+    const { jwtToken } = useSelector((store) => store.habit)
+    const  dispatch  = useDispatch()
     const restoreArchiveHabit = async () => {
         try {
             const response = await axios.post(`/api/archives/restore/${hInfo._id}`, {}, {headers: {authorization:jwtToken}})
-            dispatch({type:"SET_ARCHIVE_DATA", payload:response.data.archives})
-            dispatch({type:"SET_HABIT_DATA", payload:response.data.habits})
+            dispatch(habitActions.getArchiveData(response.data.archives))
+            dispatch(habitActions.getHabitData(response.data.habits))
+
         }
         catch (e) {
             console.log(e)
@@ -18,7 +20,8 @@ const ArchiveCard = ({hInfo}) => {
     const deleteArchiveHabit = async () => {
         try {
             const response = await axios.delete(`/api/archives/${hInfo._id}`, {headers: {authorization:jwtToken}})
-            dispatch({type:"SET_ARCHIVE_DATA", payload:response.data.archives})
+            dispatch(habitActions.getArchiveData(response.data.archives))
+
         }
         catch (e) {
             console.log(e)
